@@ -1,0 +1,14 @@
+server:
+    port: 8080
+    ssl:
+        key-store: classpath:/cert/cert.p12
+        key-store-type: PKCS12
+        key-alias: cert
+        key-store-password: ${CERT_PASSWORD:password}
+
+spring:
+    application:
+        name: edf-viewer
+
+edf-viewer:
+    edf-source-directory: ${EDF_SOURCE_DIRECTORY:./src/main/resources/edf}

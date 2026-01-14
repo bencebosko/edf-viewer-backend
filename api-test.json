@@ -1,0 +1,68 @@
+{
+	"info": {
+		"_postman_id": "6cf63db4-271d-457e-8286-63d97866014c",
+		"name": "zeto-backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8187835",
+		"_collection_link": "https://xy7777-1690.postman.co/workspace/zeto-backend~826ae944-ea49-4179-b3ca-e9e0a347a177/collection/8187835-6cf63db4-271d-457e-8286-63d97866014c?action=share&source=collection_link&creator=8187835"
+	},
+	"item": [
+		{
+			"name": "getListItems",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:8080/api/v1/edf?page=-1&pageSize=2&sortOrder=desc",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"edf"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "-1"
+						},
+						{
+							"key": "pageSize",
+							"value": "2"
+						},
+						{
+							"key": "sortOrder",
+							"value": "desc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getRecord",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:8080/api/v1/edf/invalid.edf",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"edf",
+						"invalid.edf"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
