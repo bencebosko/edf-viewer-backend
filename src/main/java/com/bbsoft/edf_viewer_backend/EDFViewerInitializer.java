@@ -18,7 +18,6 @@ public class EDFViewerInitializer implements ApplicationRunner {
     @Value("${server.port}")
     private String port;
 
-    /* Loads all EDF files automatically after starting the application. */
     @Override
     public void run(@NonNull ApplicationArguments args) {
         edfRecordService.loadEdfFiles();

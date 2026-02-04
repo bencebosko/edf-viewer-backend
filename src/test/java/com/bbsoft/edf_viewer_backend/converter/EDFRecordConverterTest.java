@@ -1,6 +1,5 @@
 package com.bbsoft.edf_viewer_backend.converter;
 
-import com.bbsoft.edf_viewer_backend.constant.Constants;
 import com.bbsoft.edf_viewer_backend.dto.EDFRecord;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,6 +12,7 @@ import ru.mipt.edf.EDFAnnotation;
 import ru.mipt.edf.EDFHeader;
 import ru.mipt.edf.EDFParserResult;
 
+import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.util.List;
 
@@ -23,7 +23,7 @@ public class EDFRecordConverterTest {
     private static final boolean IS_VALID = true;
     private static final String ID = "EDF001";
     private static final String RECORD_DATE = "01.12.25";
-    private static final ZonedDateTime EXPECTED_RECORD_DATE = ZonedDateTime.of(2025, 12, 1, 0, 0, 0, 0, Constants.DEFAULT_TIMEZONE);
+    private static final ZonedDateTime EXPECTED_RECORD_DATE = ZonedDateTime.of(2025, 12, 1, 0, 0, 0, 0, ZoneOffset.UTC);
 
     private final EDFRecordConverter edfRecordConverter = new EDFRecordConverter();
 

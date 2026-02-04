@@ -30,7 +30,6 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Stream;
 
-/* Service for loading and storing EDFRecords in the memory. */
 @Service
 @RequiredArgsConstructor
 @Slf4j
@@ -40,7 +39,6 @@ public class EDFRecordService {
     private final EDFRecordConverter edfRecordConverter;
     private List<EDFRecord> loadedEdfFiles = Collections.emptyList();
 
-    /* Loads all EDF files from the source directory. Invalid files are also inserted into the loaded files. */
     public void loadEdfFiles() {
         final var sourceDirectory = Paths.get(zetoProperties.getEdfSourceDirectory());
         final var edfFiles = new ArrayList<EDFRecord>();
@@ -62,7 +60,6 @@ public class EDFRecordService {
         setLoadedEdfFiles(edfFiles);
     }
 
-    /* Gets a Page of EDFListItem sorted by record date ascending or descending. Invalid files are always put last in the result. */
     public Page<EDFListItem> getListItems(Pageable pageable) {
         List<EDFListItem> pageItems;
         final var page = pageable.getPage();
@@ -82,17 +79,14 @@ public class EDFRecordService {
         return new Page<>(pageItems, page, pageSize, totalCount);
     }
 
-    /* Gets a full EDFRecord by fileName. If the record not found than an empty Optional is returned. */
     public Optional<EDFRecord> getRecord(String fileName) {
         return loadedEdfFiles.stream().filter(edfRecord -> Objects.equals(edfRecord.getFileName(), fileName)).findAny();
     }
 
-    /* Sets loadedEdfFiles as an UnmodifiableList. */
     void setLoadedEdfFiles(List<EDFRecord> edfFiles) {
         this.loadedEdfFiles = Collections.unmodifiableList(edfFiles);
     }
 
-    /* Comparator for sorting EDFListItem list by recordDate. EDFListItem which are invalid are always put at the end of the list. */
     private Comparator<EDFListItem> edfListItemComparator(SortOrder sortOrder) {
         var validFirstComparator = Comparator.comparing(EDFListItem::isValid).reversed();
         Comparator<ZonedDateTime> nullFirstDateComparator = Comparator.nullsFirst(Comparator.naturalOrder());

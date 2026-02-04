@@ -1,19 +1,22 @@
 package com.bbsoft.edf_viewer_backend.exception;
 
-import com.bbsoft.edf_viewer_backend.constant.ErrorCode;
+import com.bbsoft.edf_viewer_backend.constant.ErrorCodes;
 import lombok.Getter;
+import org.springframework.http.HttpStatus;
 
 @Getter
 public class EDFViewerException extends RuntimeException {
 
-    private final ErrorCode errorCode;
-
-    public EDFViewerException(ErrorCode errorCode, String message) {
-        super(message);
-        this.errorCode = errorCode;
-    }
+    private final HttpStatus httpStatus;
+    private final String errorCode;
 
     public EDFViewerException(String message) {
-        this(ErrorCode.GENERAL_ERROR, message);
+        this(HttpStatus.INTERNAL_SERVER_ERROR, ErrorCodes.EDF_VIEWER_ERROR, message);
+    }
+
+    protected EDFViewerException(HttpStatus httpStatus, String errorCode, String message) {
+        super(message);
+        this.httpStatus = httpStatus;
+        this.errorCode = errorCode;
     }
 }

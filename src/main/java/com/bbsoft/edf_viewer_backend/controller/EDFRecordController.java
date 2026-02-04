@@ -22,14 +22,12 @@ public class EDFRecordController {
 
     private final EDFRecordService edfRecordService;
 
-    /* Endpoint for getting a Page of EDFListItem. Pagination params are mandatory. */
     @GetMapping
     public ResponseEntity<Page<EDFListItem>> getListItems(@Validated Pageable pageable) {
         log.info("Get EDF list items with pageable: {}", pageable);
         return ResponseEntity.ok(edfRecordService.getListItems(pageable));
     }
 
-    /* Endpoint for getting an EDFRecord containing all data of an EDF file. */
     @GetMapping("/{fileName:.+\\.edf}")
     public ResponseEntity<EDFRecord> getRecord(@PathVariable String fileName) {
         log.info("Get EDF record by fileName {}", fileName);

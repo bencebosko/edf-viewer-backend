@@ -10,7 +10,7 @@
 	</parent>
 
 	<groupId>com.bbsoft</groupId>
-	<artifactId>edf-viewer-backend</artifactId>
+	<artifactId>EDFViewerBackend</artifactId>
 	<version>1.0</version>
     <packaging>jar</packaging>
 

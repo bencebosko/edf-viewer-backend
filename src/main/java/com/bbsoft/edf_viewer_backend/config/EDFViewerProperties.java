@@ -10,7 +10,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @Getter
 public class EDFViewerProperties {
 
-    /* Source directory of the EDF files. */
     @NotNull
     private final String edfSourceDirectory;
 }
